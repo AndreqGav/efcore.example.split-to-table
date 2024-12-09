@@ -16,14 +16,19 @@ public class AppContext : DbContext
 
         modelBuilder.Entity<Main>(builder =>
         {
-            builder.HasOne(e => e.Details).WithOne()
-                .HasForeignKey<Details>(e => e.Id);
+            // builder.HasOne(e => e.Details).WithOne()
+            //     .HasForeignKey<Details>(e => e.Id);
+
+            builder.SplitToTable("Details", tb =>
+            {
+                tb.Property(e => e.Description);
+            });
         });
 
-        modelBuilder.Entity<Details>(builder =>
-        {
-            builder.HasKey(e => e.Id);
-        });
+        // modelBuilder.Entity<Details>(builder =>
+        // {
+        //     builder.HasKey(e => e.Id);
+        // });
 
         modelBuilder.Entity<Blog>(builder =>
         {

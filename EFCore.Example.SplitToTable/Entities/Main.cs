@@ -6,7 +6,14 @@ public class Main
 
     public string? Name { get; set; }
 
-    public virtual Details? Details { get; set; }
+    // public virtual Details? Details { get; set; }
 
     public Blog? Blog { get; set; }
+
+    #region Details
+
+    public string? Description { get; set; }
+
+    #endregion
+
 }
